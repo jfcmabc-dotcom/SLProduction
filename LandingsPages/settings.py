@@ -21,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # ---------------------------------------------------------------------------
 # Modo (desarrollo / producción)
 # ---------------------------------------------------------------------------
-DEBUG = True
+DEBUG = False
 
 if DEBUG:
     SECRET_KEY = "django-insecure-solo-para-desarrollo"
@@ -36,7 +36,7 @@ else:
 
     CSRF_TRUSTED_ORIGINS = [f"https://{h}" for h in ALLOWED_HOSTS]
 
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = True
     CSRF_COOKIE_SECURE = True
 
@@ -134,10 +134,12 @@ USE_TZ = True
 # ---------------------------------------------------------------------------
 # Archivos estáticos
 # ---------------------------------------------------------------------------
-STATIC_URL = "static/"
-STATICFILES_DIRS = [BASE_DIR / "app" / "static"]
-STATIC_ROOT = BASE_DIR / "staticfiles"   # destino de `python manage.py collectstatic`
-MEDIA_URL = "media/"
+DEBUG = False
+
+STATIC_URL = "/static/"
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+MEDIA_URL = "/media/"
 MEDIA_ROOT = BASE_DIR / "media" 
 
 
