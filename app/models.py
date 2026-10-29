@@ -19,9 +19,9 @@ ATRIBUTOS_PERMITIDOS = {
 ES_HTML = re.compile(r"<(p|h2|h3|ul|ol|blockquote)\b", re.IGNORECASE)
 
 class Post(models.Model):
-    titulo = models.CharField(max_length=200)
+    titulo = models.TextField()
     slug = models.SlugField(max_length=220, unique=True, blank=True)
-    resumen = models.CharField(max_length=300)
+    resumen = models.TextField()
     portada = models.ImageField(upload_to="blog/", blank=True)
     contenido = models.TextField()
     publicado = models.BooleanField(default=False)
